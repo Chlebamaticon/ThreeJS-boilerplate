@@ -3,6 +3,7 @@ const CleanWebpackPlugin    = require("clean-webpack-plugin");
 const defaults              = require("./config.defaults");
 
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+const ModuleConcatenationPlugin = webpack.optimize.ModuleConcatenationPlugin;
 const rootDir = defaults.ROOT_DIR;
 
 const config = {
@@ -35,7 +36,8 @@ const config = {
             root: rootDir(),
             verbose: true,
             dry: false
-        })
+        }),
+        new ModuleConcatenationPlugin()
     ]
 };
 

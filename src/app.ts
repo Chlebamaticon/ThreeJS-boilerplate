@@ -1,1 +1,1 @@
-import './vendor';
+console.log('test');

@@ -4,8 +4,10 @@ const production    = require("./webpack.production.js");
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const compiler = webpack(isProduction ? production : development);
+// const compiler = webpack(isProduction ? production : development);
+//
+// compiler.run((err, stats) => {
+//    console.log(error);
+// });
 
-compiler.run((err, stats) => {
-   console.log(error);
-});
+module.exports = isProduction ? production : development;

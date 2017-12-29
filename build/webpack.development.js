@@ -1,4 +1,4 @@
-const WebpackDashboard  = require("webpack-dashboard");
+const WebpackDashboard  = require("webpack-dashboard/plugin");
 const commonConfig      = require("./webpack.common.js");
 const defaults          = require("./config.defaults.js");
 
@@ -9,7 +9,7 @@ const config = {
         plugins: [
             ...commonConfig.plugins,
             new WebpackDashboard({
-                port: 4201
+                port: process.env.NODE_PORT || defaults.PORT
             })
         ],
         devServer: {

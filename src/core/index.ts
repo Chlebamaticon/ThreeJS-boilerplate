@@ -1,4 +1,8 @@
 import {
+    Subject
+} from "rx";
+
+import {
     CameraController,
     SceneController,
     RendererController,

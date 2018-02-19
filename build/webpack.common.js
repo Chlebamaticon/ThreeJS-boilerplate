@@ -1,6 +1,7 @@
 const webpack               = require("webpack");
 const CleanWebpackPlugin    = require("clean-webpack-plugin");
 const HtmlWebpackPlugin     = require("html-webpack-plugin");
+const CopyWebpackPlugin     = require("copy-webpack-plugin");
 const defaults              = require("./config.defaults");
 
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
@@ -18,7 +19,10 @@ const config = {
     },
 
     resolve: {
-        modules: ["node_modules"],
+        modules: [
+            "node_modules",
+            rootDir("assets")
+        ],
         extensions: [".js", ".ts"],
         alias: {
             "@core": rootDir("src/core")
@@ -49,6 +53,7 @@ const config = {
             verbose: true,
             dry: false
         }),
+        new CopyWebpackPlugin([{ from: rootDir("assets"), to: "assets" }]),
         new ModuleConcatenationPlugin(),
         new HtmlWebpackPlugin({
             template: rootDir("src/index.html")
